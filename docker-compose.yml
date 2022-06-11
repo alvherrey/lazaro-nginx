@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx:stable
+    container_name: nginx
+    environment:
+      - TZ=Europe/Madrid
+    restart: unless-stopped
+    ports:
+      - "8001:80"
+    volumes:
+      - /home/ahernandez/git/face_recognition/img_known:/usr/share/nginx/html:ro
+    logging:
+        driver: "json-file"
+        options:
+            max-file: "5"
+            max-size: "10m"
